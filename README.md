@@ -2,66 +2,59 @@
 
 
 A complete end-to-end Machine Learning project following an industry checklist
-This project applies K-Nearest Neighbors (KNN) to segment customers based on:
+This project applies K-Nearest-Neighbors (KNN) to segment customers based on:
 
-Gender
-
-Age
-
-Annual Income
-
-Spending Score
+* Gender
+* Age
+* Annual Income
+* Spending Score
 
 **The goal is to classify customers into segments:**
-Low,  Medium,  and  High.
+- Low
+- Medium
+- High
 
 ## Project Checklist
 
 This project follows a full machine-learning pipeline:
 
-### 1. Problem Understanding
+## 1. Problem Understanding
 
 Identify customer segments to support marketing, targeting, and business decisions.
 
-### 2. Data Exploration (EDA)**
+## 2. Data Exploration (EDA)
 
-Dataset shape
+* Dataset shape
+* Missing values
+* Distribution of features
+* Class imbalance check 
+* Outlier detection
 
-Missing values
+## 3. Data Cleaning & Encoding
 
-Distribution of features
+* Label encoding for Gender
+* No missing values
+* No duplicates
+* Outliers reviewed but kept (KNN is sensitive — later handled)
 
-Class imbalance check
-
-Outlier detection
-
-### 3. Data Cleaning & Encoding
-
-Label encoding for Gender
-
-No missing values
-
-No duplicates
-
-Outliers reviewed but kept (KNN is sensitive — later handled)
-
-### 4. Scaling
+## 4. Scaling
 
 StandardScaler was applied to all numerical features.
 
-### 5. Dimensionality Reduction
+## 5. Dimensionality Reduction
 
-Not needed—only 4 features.
+Not needed. 
+Only 4 features.
 
-### 6. Train-Test Split
+## 6. Train-Test Split
 
 80/20 split
 
 Stratified to preserve class ratios
 
-### 7. Class Balancing
+## 7. Class Balancing
 
-**Original class counts:**
+### Original class counts:
 
 | Segment | Count |
 | ------- | ----- |
@@ -69,7 +62,7 @@ Stratified to preserve class ratios
 | High    | 57    |
 | Low     | 49    |
 
-**After balancing (undersampling):**
+### After balancing (undersampling):
 
 | Segment | Count |
 | ------- | ----- |
@@ -77,34 +70,40 @@ Stratified to preserve class ratios
 | Medium  | 75    |
 | High    | 75    |
 
-### 8. Distance Metric & K Selection
-
+## 8. Distance Metric & K Selection
+```
 Distance metric = Euclidean
 
 Best K found = 1
 (using validation search)
 
-### 9. Model Training
+```
 
-Trained KNN with:
+## 9. Model Training
 
+### Trained KNN with:
+```
 n_neighbors = 1
 
 metric = 'minkowski'
 
 weights = 'distance'
+```
+## 10. Evaluation
 
-### 10. Evaluation
-Accuracy
+####  Accuracy
+```
+Accuracy: 0.925
+```
 
-0.925
-
-**Confusion Matrix**
+#### Confusion Matrix
+```
 [[11, 0, 0],
  [ 0, 9, 1],
  [ 0, 2, 17]]
+```
 
-**Classification Report**
+#### Classification Report
 
 | Class                | Precision | Recall | F1       | Support |
 | -------------------- | --------- | ------ | -------- | ------- |
@@ -113,11 +112,9 @@ Accuracy
 | Medium               | 0.94      | 0.89   | 0.92     | 19      |
 | **Overall Accuracy** | —         | —      | **0.93** | 40      |
 
-ROC-AUC
+``` ROC-AUC: 0.9467 ```
 
-0.9467
-
-**Feature Importance**
+#### Feature Importance
 
 (Applied using permutation importance)
 
@@ -133,20 +130,22 @@ ROC-AUC
 The Spending Score contributes almost 47% toward customer segmentation.
 
 ## Project Files
-
+```
 ├── data/
-│   └── Mall_Customers.csv
+│     └── Mall_Customers.csv
 ├── notebook/
-│   └── knn_segmentation.ipynb
+│     └── knn_segmentation.ipynb
 ├── src/
-│   ├── preprocessing.py
-│   ├── model_training.py
-│   ├── evaluation.py
-│   └── utils.py
+│     ├── preprocessing.py
+│     ├── model_training.py
+│     ├── evaluation.py
+│     └── utils.py
 └── README.md
+```
 
 ## Results Summary
 
+```
 KNN achieved 92.5% accuracy
 
 Best K = 1
@@ -158,44 +157,72 @@ Segmentation most influenced by Spending Score
 Balanced dataset improved classification stability
 
 Clear class separation achieved after scaling
+```
 
 ## Conclusion
 
 This project demonstrates a complete ML pipeline from raw data to model evaluation.
-KNN performed extremely well after:
 
-Balancing data
+## KNN performed extremely well after:
 
-Scaling
-
-Choosing optimal K
-
-Using distance-based weights
-
-It can be expanded by adding:
-
-DBSCAN clustering
-
-Visualization dashboards
-
-Deployment as a web API
+* Balancing data
+* Scaling
+* Choosing optimal K
+* Using distance-based weights
+* It can be expanded by adding:
+* DBSCAN clustering
+* Visualization dashboards
+* Deployment as a web API
 
 ## Technologies Used
 
-Python
+* Python
+* Pandas
+* NumPy
+* Matplotlib
+* Seaborn
+* Scikit-Learn
 
-Pandas
+## How to Run
 
-NumPy
+Follow the steps below to run this project on your system:
 
-Matplotlib
+1. Clone the repository:
+```bash
+git clone https://github.com/afaqahmedkhalil/KNN-Customer-Segmentation.git
+```
+2. Navigate into the project folder:
 
-Seaborn
+``` 
+cd KNN-Customer-Segmentation
+```
 
-Scikit-Learn
+3. Install required dependencies:
 
-**How to Run**
-
+``` 
 pip install -r requirements.txt
+```
 
+4. Run preprocessing (optional step):
+
+``` 
+python src/preprocessing.py
+```
+
+5. Train the model:
+
+``` 
 python src/model_training.py
+```
+
+6. Evaluate the model:
+
+  ``` 
+  python src/evaluation.py
+```
+  
+7. To view the analysis notebook:
+
+``` 
+jupyter notebook notebook/knn_segmentation.ipynb
+```
