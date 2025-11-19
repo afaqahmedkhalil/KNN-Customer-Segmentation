@@ -1,7 +1,7 @@
-**KNN Customer Segmentation Project**
+# KNN Customer Segmentation Project
+
 
 A complete end-to-end Machine Learning project following an industry checklist
-
 This project applies K-Nearest Neighbors (KNN) to segment customers based on:
 
 Gender
@@ -12,19 +12,18 @@ Annual Income
 
 Spending Score
 
-The goal is to classify customers into segments: Low, Medium, and High.
+**The goal is to classify customers into segments:**
+Low,  Medium,  and  High.
 
-
-
-**Project Checklist**
+## Project Checklist
 
 This project follows a full machine-learning pipeline:
 
-1. Problem Understanding
+### 1. Problem Understanding
 
 Identify customer segments to support marketing, targeting, and business decisions.
 
-2. Data Exploration (EDA)
+### 2. Data Exploration (EDA)**
 
 Dataset shape
 
@@ -36,7 +35,7 @@ Class imbalance check
 
 Outlier detection
 
-3. Data Cleaning & Encoding
+### 3. Data Cleaning & Encoding
 
 Label encoding for Gender
 
@@ -46,21 +45,21 @@ No duplicates
 
 Outliers reviewed but kept (KNN is sensitive — later handled)
 
-4. Scaling
+### 4. Scaling
 
 StandardScaler was applied to all numerical features.
 
-5. Dimensionality Reduction
+### 5. Dimensionality Reduction
 
 Not needed—only 4 features.
 
-6. Train-Test Split
+### 6. Train-Test Split
 
 80/20 split
 
 Stratified to preserve class ratios
 
-7. Class Balancing
+### 7. Class Balancing
 
 **Original class counts:**
 
@@ -78,14 +77,14 @@ Stratified to preserve class ratios
 | Medium  | 75    |
 | High    | 75    |
 
-8. Distance Metric & K Selection
+### 8. Distance Metric & K Selection
 
 Distance metric = Euclidean
 
 Best K found = 1
 (using validation search)
 
-9. Model Training
+### 9. Model Training
 
 Trained KNN with:
 
@@ -95,17 +94,18 @@ metric = 'minkowski'
 
 weights = 'distance'
 
-10. Evaluation
+### 10. Evaluation
 Accuracy
 
 0.925
 
-Confusion Matrix
+**Confusion Matrix**
 [[11, 0, 0],
  [ 0, 9, 1],
  [ 0, 2, 17]]
 
 **Classification Report**
+
 | Class                | Precision | Recall | F1       | Support |
 | -------------------- | --------- | ------ | -------- | ------- |
 | High                 | 1.00      | 1.00   | 1.00     | 11      |
@@ -114,6 +114,7 @@ Confusion Matrix
 | **Overall Accuracy** | —         | —      | **0.93** | 40      |
 
 ROC-AUC
+
 0.9467
 
 **Feature Importance**
@@ -127,10 +128,11 @@ ROC-AUC
 | Age            | 0.0825     |
 | Gender         | 0.0100     |
 
-Interpretation:
+## Interpretation:
+
 The Spending Score contributes almost 47% toward customer segmentation.
 
-**Project Files**
+## Project Files
 
 ├── data/
 │   └── Mall_Customers.csv
@@ -143,7 +145,7 @@ The Spending Score contributes almost 47% toward customer segmentation.
 │   └── utils.py
 └── README.md
 
-**Results Summary** 
+## Results Summary
 
 KNN achieved 92.5% accuracy
 
@@ -157,7 +159,7 @@ Balanced dataset improved classification stability
 
 Clear class separation achieved after scaling
 
-**Conclusion**
+## Conclusion
 
 This project demonstrates a complete ML pipeline from raw data to model evaluation.
 KNN performed extremely well after:
@@ -178,7 +180,8 @@ Visualization dashboards
 
 Deployment as a web API
 
-**Technologies Used**
+## Technologies Used
+
 Python
 
 Pandas
@@ -192,6 +195,7 @@ Seaborn
 Scikit-Learn
 
 **How to Run**
+
 pip install -r requirements.txt
 
 python src/model_training.py
